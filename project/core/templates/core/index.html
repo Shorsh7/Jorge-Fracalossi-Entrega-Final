@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+
+
+{% block title %}
+        <h1>¡Bienvenido/s a Pokédex!</h1>
+{% endblock title %}
+
+{% block content %}
+    <ul>
+        <li>
+            <a href="{% url 'Pokedex:home' %}">Pokédex</a>
+
+            <a href="{% url 'Pokedex:pokemon_home' %}">Buscar un Pokémon</a>
+
+            <a href="{% url 'Pokedex:pokemon_create' %}">Añadir un Pokémon</a>
+        </li>
+    </ul>
+{% endblock content %}

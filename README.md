@@ -1,2 +1,7 @@
-# Jorge-Fracalossi-Entrega-Final
-Entrega final para el curso Coderhouse de Python
+PROYECTO FINAL CODERHOUSE
+
+Alumno: Jorge Ricardo Fracalossi Martíne
+
+Comisión:
+
+# Acerca del Proyecto:
