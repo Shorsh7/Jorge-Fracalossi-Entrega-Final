@@ -3,6 +3,7 @@ from django.db import models
 class Pokemon(models.Model):
     nombre = models.CharField(max_length=200)
     tipo = models.CharField(max_length=200)
+    numero = models.IntegerField(null=True)
     habilidad = models.CharField(max_length=200)
     descripcion = models.TextField()
 

@@ -8,7 +8,7 @@
     {% if error %}
         <p style="color: blue; font-weight: bold"> ERROR: {{ error }}</p>
     {% endif %}
-    <form method="post"> 
+    <form method="post" action="{% url 'Pokedex:pokemon_create' %}"> 
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Guardar</button>

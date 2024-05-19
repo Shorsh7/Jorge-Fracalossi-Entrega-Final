@@ -5,7 +5,7 @@ from Pokedex import views
 app_name = 'Pokedex'
 
 urlpatterns = [
-   
+
     path('', views.home, name="home"),
     path('pokemon_create/', views.pokemon_create, name="pokemon_create"),
     path('pokemon_home/', views.pokemon_home, name="pokemon_home"),

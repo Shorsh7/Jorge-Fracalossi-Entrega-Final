@@ -1,0 +1,13 @@
+{% extends 'core/base.html' %}
+
+
+{% block title %}
+    <h1>¡Preséntanos un entrenador!</h1>
+{% endblock title %}
+
+{% block content %}
+    <a href="{% url 'Pokedex:entrenador_create' %}">Agregar un entrenador</a>
+    {% for entrenador in entrenadores %}
+        <p>{{ entrenador.nombre }} | {{ entrenador.ciudad_de_origen }} | {{ entrenador.edad }} | {{ entrenador.historia }}</p>
+    {% endfor %}
+{% endblock content %}

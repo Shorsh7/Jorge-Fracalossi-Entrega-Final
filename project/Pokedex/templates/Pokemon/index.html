@@ -1,0 +1,12 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+    <h1>¡Registra un nuevo Pokemon!</h1>
+{% endblock title %}
+
+{% block content %}
+    <a href="{% url 'Pokedex:pokemon_create' %}">Crear Pokemon</a>
+    {% for pokemon in pokemons %}
+        <p>{{ pokemon.nombre }} | {{ pokemon.tipo }} | {{ pokemon.numero}} | {{ pokemon.habilidad }} | {{ pokemon.descripcion }}</p>
+    {% endfor %}
+{% endblock content %}
