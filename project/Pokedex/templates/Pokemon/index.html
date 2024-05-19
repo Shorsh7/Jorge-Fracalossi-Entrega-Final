@@ -5,8 +5,25 @@
 {% endblock title %}
 
 {% block content %}
-    <a href="{% url 'Pokedex:pokemon_create' %}">Crear Pokemon</a>
+<div class="row">
     {% for pokemon in pokemons %}
-        <p>{{ pokemon.nombre }} | {{ pokemon.tipo }} | {{ pokemon.numero}} | {{ pokemon.habilidad }} | {{ pokemon.descripcion }}</p>
+    <div class="col-2">
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center"> {{ pokemon.numero }}</h5>
+              <h3 class="text-center"> {{ pokemon.nombre }} </h3>
+              <ul class="list-group">
+                <li class="list-group-item">Tipo: {{ pokemon.tipo }}</li>
+                <li class="list-group-item">Habilidad: {{ pokemon.habilidad }}</li>
+                <li class="list-group-item"><p>{{ pokemon.descripcion }}</p></li>
+            </ul>
+            </div>
+        </div>
+    </div>
     {% endfor %}
+</div>
+    <a href="{% url 'Pokedex:pokemon_create' %}">Crear Pokemon</a>
+        
+    
 {% endblock content %}
