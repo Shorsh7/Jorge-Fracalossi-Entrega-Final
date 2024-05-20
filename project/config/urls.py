@@ -24,4 +24,5 @@ urlpatterns = [
     path('pokedex/', include('Pokedex.urls', namespace='pokedex')),
     path('login/', views.login, name='login'),
     path('register/', views.register, name='register'),
+    path('logout/', views.auth_logout, name='logout'),
 ]
