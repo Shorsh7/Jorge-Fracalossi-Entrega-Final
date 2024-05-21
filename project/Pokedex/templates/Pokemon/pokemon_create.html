@@ -6,7 +6,7 @@
 </style>
 
 {% block content %}
-<div class="cotainer-fluid">
+<div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-4">
             <form method="post" action="{% url 'Pokedex:pokemon_create' %}"> 
@@ -23,7 +23,6 @@
                             {% else %}
                                 <input type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_label }}" name="{{ field.html_name }}" value="">
                             {% endif %}
-
                         </div>
                     {% endfor %}
                 </div>

@@ -1,0 +1,45 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}
+<h1>¡Registra un nuevo Pokemon!</h1>
+{% endblock title %}
+
+{% block content %}
+{% if user.is_superuser %}
+<div class="d-flex ms-3"><a class="btn btn-primary" href="{% url 'Pokedex:pokemon_create' %}">Agregar Pokemon</a></div>
+{% endif %}
+<div class="container-fluid">
+    <div class="row">
+        <table class="table table-borderless table-hover">
+            <thead>
+                <tr>
+                <th>Número</th>
+                <th>Pokémon</th>
+                <th>Tipo</th>
+                <th>habilidad</th>
+                <th>Descripción</th>
+                <th>Imagen</th>
+                <th>Acción</th>
+                </tr>
+            </thead>
+        {% for pokemon in pokemons %}
+            <tbody>
+                <tr>
+                <td colspan="1">{{ pokemon.numero }}</td>
+                <td>{{ pokemon.nombre }}</td>
+                <td>{{ pokemon.tipo }}</td>
+                <td>{{ pokemon.habilidad }}</td>
+                <td colspan="1">{{ pokemon.descripcion }}</td>
+                <td><img src="{% static '/pokemon/' %}{{pokemon.numero}}.png" class="rounded-circle " width="75" height="75"></td>
+                <td colspan="3"><a class="btn btn-warning mb-1 me-2">Editar</a><a class="btn btn-danger">Eliminar</a></td>
+                </tr>
+            </tbody>
+        {% endfor %}
+        </table>
+    </div>
+</div>
+
+
+
+{% endblock content %}

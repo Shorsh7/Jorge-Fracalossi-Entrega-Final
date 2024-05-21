@@ -12,6 +12,8 @@ def home(request):
 def pokemon_home(request):
     query = models.Pokemon.objects.all()
     context = {"pokemons": query}
+    if request.user.is_superuser:
+        return render(request, "Pokemon/index_admin.html", context)
     return render(request, "Pokemon/index.html", context)
 
 def pokemon_create(request):
