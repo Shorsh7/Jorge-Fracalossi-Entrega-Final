@@ -31,6 +31,8 @@ def pokemon_create(request):
 def entrenador_home(request):
     query = models.Entrenador.objects.all()
     context = {"entrenadores": query}
+    if request.user.is_superuser:
+        return render(request, "Entrenador/index_admin.html", context)
     return render(request, "Entrenador/index.html", context)
 
 def entrenador_create(request):

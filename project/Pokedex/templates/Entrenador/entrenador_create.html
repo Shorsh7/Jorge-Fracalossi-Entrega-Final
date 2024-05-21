@@ -1,17 +1,34 @@
 {% extends "core/base.html" %}
 
-{% block title %}
-    <h1>Agrega un nuevo Entrenador</h1>
-{% endblock title %}
+<style>
+    ul {color:red;}
+    li {color:blue;} 
+</style>
 
 {% block content %}
-    <h1>Agrega un nuevo Entrenador</h1>
-    {% if error %}
-        <p style="color: blue; font-weight: bold"> ERROR: {{ error }}</p>
-    {% endif %}
-    <form method="post" action="{% url 'Pokedex:entrenador_create' %}"> 
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Guardar</button>
-    </form>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <form method="post" action="{% url 'Pokedex:pokemon_create' %}"> 
+                {% csrf_token %}
+                <div class="form-group">
+                    {% for field in form %}
+                        <div class="mb-3">
+                            <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                            {% if field.errors %}
+                                {{ field.errors }}
+                            {% endif %}
+                            {% if field.name == 'descripcion' %}
+                                <textarea class="form-control" id="{{ field.id_for_label }}" name="{{ field.html_name }}"></textarea>
+                            {% else %}
+                                <input type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_label }}" name="{{ field.html_name }}" value="">
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form
+        </div>
+    </div>
+</div>
 {% endblock content %}

@@ -1,13 +1,33 @@
-{% extends 'core/base.html' %}
-
-
-{% block title %}
-    <h1>¡Preséntanos un entrenador!</h1>
-{% endblock title %}
+{% extends "core/base.html" %}
+{% load static %}
 
 {% block content %}
-    <a href="{% url 'Pokedex:entrenador_create' %}">Agregar un entrenador</a>
+{% if user.is_superuser %}
+<div class="d-flex ms-3"><a class="btn btn-primary" href="{% url 'Pokedex:entrenador_create' %}">Agregar Entrenador</a></div>
+{% endif %}
+<div class="container-fluid">
+  <div class="row">
     {% for entrenador in entrenadores %}
-        <p>{{ entrenador.nombre }} | {{ entrenador.ciudad_de_origen }} | {{ entrenador.edad }} | {{ entrenador.historia }}</p>
+    <div class="col-2 d-flex align-items-stretch">
+        <div class="card mt-3" style="width: 18rem;">
+            <div class="d-flex justify-content-center mt-2">
+              <img src="{% static '/entrenador/' %}{{entrenador.nombre}}.png" class="rounded" width="150" height="200">
+            </div>
+
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title text-center">{{ entrenador.nombre }}</h5>
+              <h3 class="text-center">Edad: {{ entrenador.edad }}</h3>
+              <ul class="list-group list-group-flush flex-grow-1">
+                <li class="list-group-item">Ciudad de origen: {{ entrenador.ciudad_de_origen }}</li>
+                <li class="list-group-item">Historia: {{ entrenador.historia }}</li>
+              </ul>
+            </div>
+        </div>
+    </div>
     {% endfor %}
+</div>
+</div>
+
+
+
 {% endblock content %}

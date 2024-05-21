@@ -1,0 +1,39 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+{% if user.is_superuser %}
+<div class="d-flex ms-3"><a class="btn btn-primary" href="{% url 'Pokedex:entrenador_create' %}">Agregar Entrenador</a></div>
+{% endif %}
+<div class="container-fluid">
+    <div class="row">
+        <table class="table table-borderless table-hover">
+            <thead>
+                <tr>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Ciudad de origen</th>
+                <th>Historia</th>
+                <th>Imagen</th>
+                <th>Acción</th>
+                </tr>
+            </thead>
+        {% for entrenador in entrenadores %}
+            <tbody>
+                <tr>
+                <td colspan="1">{{ entrenador.nombre }}</td>
+                <td>{{ entrenador.edad }}</td>
+                <td>{{ entrenador.ciudad_de_origen }}</td>
+                <td colspan="1">{{ entrenador.historia }}</td>
+                <td><img src="{% static '/entrenador/' %}{{entrenador.nombre}}.png" class="rounded-circle " width="75" height="75"></td>
+                <td colspan="3"><a class="btn btn-warning mb-1 me-2">Editar</a><a class="btn btn-danger">Eliminar</a></td>
+                </tr>
+            </tbody>
+        {% endfor %}
+        </table>
+    </div>
+</div>
+
+
+
+{% endblock content %}
