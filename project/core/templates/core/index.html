@@ -1,10 +1,14 @@
 {% extends 'core/base.html' %}
-
+{% load static %}
 
 {% block title %}
-        <h1>¡Bienvenido/s a Pokédex!</h1>
+        <h1>¡Bienvenido a Pokédex!</h1>
 {% endblock title %}
 
 {% block content %}
-    
+        <div class="text-center me-4 mt-3 "><h1>¡Bienvenido!</h1></div>
+<div class="logo">
+        <img src="{% static '151pokemon.png' %}" alt="" height="550" width="1500">
+        <div class="text-center fs-3" style="margin-top: -35px; margin-right: -25px;"><h1>Créditos de la imagen: scholan.club</h1></div>
+    </div>
 {% endblock content %}

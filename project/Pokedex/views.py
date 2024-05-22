@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from . import models
 
@@ -46,4 +46,43 @@ def entrenador_create(request):
     else:
         form = EntrenadorForm()
     return render(request, "Entrenador/entrenador_create.html", {"form": form})
-        
+
+def entrenador_edit(request, pk):
+    entrenador = get_object_or_404(models.Entrenador, pk=pk)
+    if request.method == "POST":
+        form = EntrenadorForm(request.POST, instance=entrenador)
+        if form.is_valid():
+            form.save()
+            return redirect("Pokedex:entrenador_home")
+        else:
+            return render(request, "Entrenador/entrenador_create.html", {"form": form, "error": form.errors})
+    else:
+        form = EntrenadorForm(instance=entrenador)
+        return render(request, "Entrenador/entrenador_create.html", {"form": form})
+    
+def pokemon_edit(request, pk):
+    pokemon = get_object_or_404(models.Pokemon, pk=pk)
+    if request.method == "POST":
+        form = PokemonForm(request.POST, instance=pokemon)
+        if form.is_valid():
+            form.save()
+            return redirect("Pokedex:pokemon_home")
+        else:
+            return render(request, "Pokemon/pokemon_create.html", {"form": form, "error": form.errors})
+    else:
+        form = PokemonForm(instance=pokemon)
+        return render(request, "Pokemon/pokemon_create.html", {"form": form})
+    
+def pokemon_delete(request, pk):
+    pokemon = get_object_or_404(models.Pokemon, pk=pk)
+    if request.method == "POST":
+        pokemon.delete()
+        return redirect("Pokedex:pokemon_home")
+    return render(request, "Pokemon/index.html", {"pokemons": models.Pokemon.objects.all()})
+
+def entrenador_delete(request, pk):
+    entrenador = get_object_or_404(models.Entrenador, pk=pk)
+    if request.method == "POST":
+        entrenador.delete()
+        return redirect("Pokedex:entrenador_home")
+    return render(request, "Entrenador/index.html", {"entrenadores": models.Entrenador.objects.all()})

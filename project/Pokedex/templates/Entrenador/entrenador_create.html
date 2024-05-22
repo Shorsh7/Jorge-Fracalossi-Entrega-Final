@@ -9,7 +9,7 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-4">
-            <form method="post" action="{% url 'Pokedex:pokemon_create' %}"> 
+            <form method="post"> 
                 {% csrf_token %}
                 <div class="form-group">
                     {% for field in form %}
@@ -19,9 +19,9 @@
                                 {{ field.errors }}
                             {% endif %}
                             {% if field.name == 'descripcion' %}
-                                <textarea class="form-control" id="{{ field.id_for_label }}" name="{{ field.html_name }}"></textarea>
+                                <textarea class="form-control" id="{{ field.id_for_label }}" name="{{ field.html_name }}">{{ field.value|default_if_none:'' }}</textarea>
                             {% else %}
-                                <input type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_label }}" name="{{ field.html_name }}" value="">
+                                <input type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_label }}" name="{{ field.html_name }}" {{ field.value|default_if_none:'' }}>
                             {% endif %}
                         </div>
                     {% endfor %}

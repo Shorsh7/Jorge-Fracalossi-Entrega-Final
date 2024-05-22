@@ -20,7 +20,7 @@ def login_view(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 auth_login(request, user)
-                return redirect('pokedex:pokemon_home')
+                return render(request, 'core/index.html')
             else:
                 messages.error(request, 'Nombre de usuario o contraseña incorrectos.')
         else:
@@ -49,8 +49,9 @@ def register(request):
 
 def auth_logout(request):
     logout(request)
-    return redirect('Pokedex:pokemon_home')
+    form = CustomAuthenticationForm
+    return render(request, 'core/login.html', {'form': form})
 
 
-def sobre_mi(request):
-    return render(request, 'core/sobre_mi.html')
+def aboutme(request):
+    return render(request, 'core/aboutme.html')
