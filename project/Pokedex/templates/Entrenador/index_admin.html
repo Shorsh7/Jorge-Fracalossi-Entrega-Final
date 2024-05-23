@@ -26,8 +26,9 @@
                 <td>{{ entrenador.ciudad_de_origen }}</td>
                 <td colspan="1">{{ entrenador.historia }}</td>
                 <td><img src="{% static '/entrenador/' %}{{entrenador.nombre}}.png" class="rounded-circle " width="75" height="75"></td>
-                <td colspan="3"><a class="btn btn-warning mb-1 me-2" href="{% url 'Pokedex:entrenador_edit' entrenador.pk %}">Editar</a>
-                <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" data-id="{{ entrenador.pk }}">Eliminar</button></td>
+                <td colspan="3">
+                    <a class="btn btn-warning mb-1 me-2" href="{% url 'Pokedex:entrenador_edit' entrenador.pk %}">Editar</a>
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" data-id="{{ entrenador.pk }}">Eliminar</button></td>
                 </tr>
             </tbody>
         {% endfor %}
