@@ -58,6 +58,7 @@ def entrenador_edit(request, pk):
             return render(request, "Entrenador/entrenador_create.html", {"form": form, "error": form.errors})
     else:
         form = EntrenadorForm(instance=entrenador)
+        print(form)
         return render(request, "Entrenador/entrenador_create.html", {"form": form})
     
 def pokemon_edit(request, pk):

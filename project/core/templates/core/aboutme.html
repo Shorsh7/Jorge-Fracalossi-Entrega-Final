@@ -6,9 +6,17 @@
 {% endblock title %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-lg-6 d-flex align-items-center" style="margin-top: 50px";>
-            <img src="{% static 'shorsh.png' %}" alt="Imagen" style="max-width: 300px; height: 300px; margin-left: 30px;">
+<div class="container">
+<div class="row">
+    <div class="col-12">
+      <div class="d-flex float-end">
+        <a class="btn btn-primary" href="/"> <<  Back</a>
+      </div>
+    </div>
+  </div>
+    <div class="row text-center">
+        <div class="col-lg-12 d-flex align-items-center" style="margin-top: 50px";>
+            <img class="rounded" src="{% static 'shorsh.png' %}" alt="Imagen" style="max-width: 300px; height: 300px; margin-left: 30px;">
             <div style="text-align: justify; margin-left: 30px;">
                 <p>¡Hola! Mi nombre es Jorge, pero todos los que me conocen me dicen Shorsh. ¡Siéntanse libres!</p>
                 <p>Tengo 35 años y entre mis aficiones y pasiones se encuentran mi familia, amigos, los videojuegos, el básquet, Pokémon, etc.
@@ -19,6 +27,5 @@
                     Disfruten mucho y, por sobre todas las cosas, ¡atrápenlos a todos!
         </div>
     </div>
+</div>
 {% endblock content %}
-
-<!-- This is merely a commentary -->
